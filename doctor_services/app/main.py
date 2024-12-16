@@ -17,6 +17,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+mysqlconnector://root:@localhost/
 db = SQLAlchemy(app)
 
 
+#tambah data
 @app.route("/doctors/", methods=["POST"])
 def add_doctor():
     print(f"Request JSON: {request.get_json()}")  # Log data yang diterima
@@ -52,6 +53,7 @@ def add_doctor():
         print(f"Error: {e}")
         abort(500, description="Gagal menambahkan dokter")
 
+#mengambil semua data dokter
 @app.route("/doctors/", methods=["GET"])
 def read_doctors():
     doctors = db.session.query(Dokter).all()  # Menggunakan db.session
